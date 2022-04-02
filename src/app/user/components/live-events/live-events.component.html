@@ -1,0 +1,38 @@
+<div class="control-section container">
+    <div class="col-lg-9 col-md-12 col-sm-12 content-wrapper">
+        <div class="title-section">
+            <h5>
+              Etkinlik - Sosyal Aktivite
+            </h5>
+
+        </div>
+        <ejs-schedule #scheduleObj width='100%' height='auto' width='100%' [readonly]='true' [selectedDate]="selectedDate" [eventSettings]="eventSettings" [(currentView)]="currentView" (popupOpen)="onPopupOpen($event)">
+
+            <e-views>
+
+                <e-view option="Agenda" [allowVirtualScrolling]="virtualScroll">
+
+                    <ng-template #eventTemplate let-data>
+                        <div class="e-appointment1">
+                            <div class="e-subject-wrap">
+                                <br>
+                                <div class="e-subject">{{data.Subject}}</div>
+                            </div>
+                            <div class="e-date-time">{{data.StartTime | date : 'hh:mm a'}} - {{data.EndTime | date : 'hh:mm a'}}</div>
+
+                            <div>
+                                <a href="{{data.url}}" target="_blank">Katıl</a>
+                            </div>
+                        </div>
+                    </ng-template>
+                </e-view>
+
+
+
+            </e-views>
+
+
+        </ejs-schedule>
+    </div>
+
+</div>

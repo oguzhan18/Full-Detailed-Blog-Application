@@ -1,0 +1,196 @@
+.article-column {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    box-shadow: 0 2px 0 rgb(90 97 105 / 11%), 0 4px 8px rgb(90 97 105 / 8%), 0 10px 10px rgb(90 97 105 / 0%), 0 7px 70px rgb(90 97 105 / 38%);
+    border-radius: .25rem;
+    /* box-shadow: 0 2px 0 rgb(90 97 105 / 11%), 0 4px 8px rgb(90 97 105 / 12%), 0 10px 10px rgb(90 97 105 / 6%), 0 7px 70px rgb(90 97 105 / 10%); */
+    background-color: #fff;
+    border: none;
+    border-radius: .625rem;
+    margin-bottom: 4em;
+    cursor: pointer;
+}
+
+.article-column h5 {
+    margin-top: 0px;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-header-items {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.article-column a {
+    color: #3d5170!important;
+}
+
+.article-column p {
+    margin-bottom: 0;
+    display: block;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 2.9em;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-weight: 500;
+    color: #5a6169;
+    font-size: 14px;
+}
+
+span {
+    font-weight: 500;
+    font-size: 15px;
+    display: inline;
+}
+
+svg {
+    display: inline-block;
+    font-size: inherit;
+    height: 1em;
+    overflow: visible;
+    vertical-align: -.125em;
+    width: .875em;
+    margin-right: 10px;
+}
+
+.description {
+    max-height: 70px;
+}
+
+.datetime ul li {
+    list-style-type: none;
+    color: rgb(18, 18, 66);
+    cursor: pointer;
+}
+
+.datetime ul a {
+    padding-left: 15px;
+    color: #000;
+}
+
+.listing-wrapper {
+    display: flex;
+}
+
+.listing-wrapper .row.lisitng {
+    width: 78%;
+    justify-content: flex-start;
+    padding-left: 1em;
+}
+
+.date-filter .no-active {
+    display: none;
+}
+
+.datetime .date-filter .actived {
+    color: rgb(17 143 232)
+}
+
+.selected-date {
+    display: flex;
+    justify-content: space-between;
+    padding: 0em 1em 0.5em 1em;
+}
+
+.datetime {
+    box-shadow: 0 2px 0 rgb(90 97 105 / 11%), 0 4px 8px rgb(90 97 105 / 8%), 0 10px 10px rgb(90 97 105 / 0%), 0 7px 70px rgb(90 97 105 / 38%);
+    border-radius: .25rem;
+    /* box-shadow: 0 2px 0 rgb(90 97 105 / 11%), 0 4px 8px rgb(90 97 105 / 12%), 0 10px 10px rgb(90 97 105 / 6%), 0 7px 70px rgb(90 97 105 / 10%); */
+    background-color: #fff;
+    border: none;
+    border-radius: .625rem;
+    padding: 1em 0em;
+}
+
+.datetime-wrapper {
+    padding: 1em;
+    width: 22%;
+    max-width: 270px;
+}
+
+.datetime ul:nth-last-child(1) {
+    margin-bottom: 0;
+}
+
+.datetime hr {
+    max-width: 90%;
+    margin: 0 auto;
+    margin-bottom: 0.5em;
+}
+
+ul.date-filter {
+    padding-left: 1em;
+}
+
+ul.date-filter li {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.img-grid img {
+    max-width: 100%;
+    min-height: 260px;
+    object-fit: cover;
+    object-position: 79%;
+    max-height: 300px;
+    width: 100%;
+}
+
+.bg-img {
+    border: 1px solid #dadce0;
+    overflow: hidden;
+    border-radius: 12px;
+    margin: 2em 0;
+}
+
+
+/* .img-grid .bg-img {
+    min-height: 260px;
+} */
+
+@media screen and (max-width:767px) {
+    .listing-wrapper {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .listing-wrapper .row.lisitng,
+    .datetime-wrapper {
+        width: 100%;
+    }
+    .listing-wrapper .row.lisitng {
+        padding-left: 0;
+    }
+    .datetime-wrapper {
+        max-width: 300px;
+    }
+    .card-title {
+        flex-direction: column;
+    }
+    .card-title {
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    .card-header-items {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+}

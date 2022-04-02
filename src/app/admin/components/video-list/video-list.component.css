@@ -1,0 +1,8 @@
+.ng-invalid.ng-touched ::ng-deep .cke_chrome,
+input.ng-invalid.ng-touched {
+    border-color: red;
+}
+
+.primary {
+    color: green;
+}

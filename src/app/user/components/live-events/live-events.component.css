@@ -1,0 +1,33 @@
+.content-wrapper {
+    margin: 0 auto;
+    max-width: 80%;
+}
+
+ejs-schedule {
+    min-height: 300px;
+}
+
+::ng-deep .e-schedule .e-agenda-view .e-appointment.e-template {
+    width: 100%;
+    flex-direction: row;
+}
+
+.title-section {
+    margin-bottom: 3em;
+}
+
+
+/* ::ng-deep .e-schedule .e-agenda-view .e-day-date-header.e-current-day {
+    color: #2b3452;
+}
+
+::ng-deep .e-schedule .e-agenda-view .e-subject {
+    color: #2b3452;
+    font-size: 18px;
+} */
+
+@media screen and (max-width:767px) {
+    .content-wrapper {
+        max-width: 100%;
+    }
+}

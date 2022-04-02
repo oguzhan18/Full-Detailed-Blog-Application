@@ -1,0 +1,18 @@
+.article-image {
+    background-image: url(https://neilpatel.com/wp-content/uploads/2017/08/blog.jpg);
+    height: 200px;
+    width: 100%;
+    background-position: center;
+    background-size: contain;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wrapper button {
+    background: #3d455e;
+    border-color: #3d455e;
+}

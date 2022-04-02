@@ -1,0 +1,121 @@
+<div class="container">
+    <div class="title-section">
+        <h5>
+            Etkinlik Ekle
+        </h5>
+
+        <button class="btn btn-add btn-primary" (click)="goBack()">Geri Çık</button>
+    </div>
+    <div class="add-form">
+        <form class="login-box" [formGroup]="eventForm" (ngSubmit)="submitForm()">
+            <div class="form-row row">
+                <div class="col-md-12">
+                    <label>Başlık<span class="error-red">*</span></label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="title">
+                        <div class="error" *ngIf="f.title.invalid && ( (f.title.dirty || f.title.touched))">
+                            <div *ngIf="f.title.errors.required">
+                                Başlık aalanı doldurmak zorunlu!!!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row row">
+                <div class="col-md-12">
+                    <label>Etkinlik Düzbeleyen<span class="error-red">*</span></label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="organizer">
+                        <div class="error" *ngIf="f.organizer.invalid && ( (f.organizer.dirty || f.organizer.touched))">
+                            <div *ngIf="f.organizer.errors.required">
+                                Etkinlik Düzbeleyen doldurmak zorunlu!!!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="">
+
+
+                <div class="form-row row wrapper-dt-time">
+                    <div class="wrapper1">
+                        <label>Xaman <span class="error-red">*</span></label>
+                        <div class="form-group">
+                            <!-- <input type="date" class="form-control" formControlName="date"> -->
+                            <input type="text" placeholder="Datepicker" (bsValueChange)="onValueChange($event)" class="form-control" [bsConfig]="bsConfig" bsDatepicker formControlName="date" [minDate]="todayDate">
+
+                            <div class="error" *ngIf="f.date.invalid && ( (f.date.dirty || f.date.touched))">
+                                <div *ngIf="f.date.errors.required">
+                                    Zaman doldurmak zorunlu!!!
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="wrapper1">
+                        <label>Başlangıç Zamanı<span class="error-red">*</span></label>
+                        <div class="form-group">
+                            <timepicker formControlName="startTime" [showMeridian]="false" [mousewheel]="true" [max]="eventForm.value.endTime" value="todayDate" [arrowkeys]="true"></timepicker>
+                            <!-- <input type="time" class="form-control" formControlName="startTime"> -->
+                            <div class="error" *ngIf="f.startTime.invalid && ( (f.startTime.dirty || f.startTime.touched))">
+                                <div *ngIf="f.startTime.errors.required">
+                                    Başlangıç Zamanı yanlış veya bitiş tarihinden önce olmalıdır.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="wrapper1">
+                        <label>Bitiş Zamanı<span class="error-red">*</span></label>
+                        <div class="form-group">
+
+                            <timepicker formControlName="endTime" [showMeridian]="false" [min]="eventForm.value.startTime" [mousewheel]="true" [arrowkeys]="true"></timepicker>
+                            <div class="error" *ngIf="f.endTime.invalid && ( (f.endTime.dirty || f.endTime.touched))">
+                                <div *ngIf="f.endTime.errors.required">
+                                    Bitiş Zamanı yanlış veya başlangıç ​​tarihinden daha uzun olmalı.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+            <div class="form-row row">
+                <div class="col-md-12">
+                    <label>Etkinlik Url<span class="error-red">*</span></label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="url">
+                        <div class="error" *ngIf="f.url.invalid && ( (f.url.dirty || f.url.touched))">
+                            <div *ngIf="f.url.errors.required">
+                               (https://) ile başlamak zorunlu!!!
+                            </div>
+                            <div *ngIf="f.url.errors.pattern">
+                                Etkinlik URL'si Geçersiz!!!
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <pre>{{eventForm.get('title').valid}} , {{eventForm.get('organizer').valid}} ,{{eventForm.get('date').valid}}, {{eventForm.get('startTime').valid}}, {{eventForm.get('endTime').valid}}, {{eventForm.get('url').valid}}</pre>
+
+            <div class="flex-button">
+                <button type="submit" class="btn btn-common  btn-success butn" [disabled]="eventForm.invalid">Kayıt</button>
+                <button type="button" class="btn btn-common  btn-danger butn" (click)="goBack()">İptal</button>
+            </div>
+
+        </form>
+    </div>
+</div>

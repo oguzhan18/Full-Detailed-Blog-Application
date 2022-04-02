@@ -1,0 +1,21 @@
+.payments {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.payments .p1 {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+}
+
+.payments .p1 img {
+    max-width: 43px;
+    border-radius: 50%;
+    max-height: 43px;
+}
+
+.payments .p1 p {
+    margin-left: 2em;
+    margin-bottom: 0;
+}

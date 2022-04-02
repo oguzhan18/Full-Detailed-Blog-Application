@@ -1,0 +1,22 @@
+.wrapper-dt-time {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wrapper1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+}
+
+.wrapper1 label {
+    padding-right: 1em;
+    padding-bottom: 5px;
+}
+
+@media screen and (max-width:767px) {
+    .wrapper1 {
+        padding: 1em 10px;
+    }
+}

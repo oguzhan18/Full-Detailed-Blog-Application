@@ -1,0 +1,15 @@
+.img-preview img {
+    max-width: 100%;
+    width: 300px;
+}
+
+@media screen and (max-width:767px) {
+    .img-preview img {
+        max-width: 100%;
+        width: auto;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2em;
+    }
+}

@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="title-section">
+        <h5>
+            Video Ekleme!
+        </h5>
+
+        <button class="btn btn-add btn-primary" (click)="goBack()">Geri</button>
+    </div>
+    <div class="add-form">
+        <form class="login-box" [formGroup]="videoForm" (ngSubmit)="submitForm()">
+            <div class="form-row row">
+                <div class="col-md-12">
+                    <label>Başlık<span class="error-red">*</span></label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="title">
+                        <div class="error" *ngIf="f.title.invalid && ( (f.title.dirty || f.title.touched))">
+                            <div *ngIf="f.title.errors.required">
+                                Başlık zorunlu!!!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row row">
+                <div class="col-md-12">
+                    <label>Kim Yüklüyor<span class="error-red">*</span></label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="creator">
+                        <div class="error" *ngIf="f.creator.invalid && ( (f.creator.dirty || f.creator.touched))">
+                            <div *ngIf="f.creator.errors.required">
+                                bu alan zorunlu!!!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row row">
+                <div class="col-md-12">
+                    <label>Video url<span class="error-red">*</span></label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="url" (blur)="onBlurVideoFeild()">
+                        <div class="error" *ngIf="f.url.invalid && ( (f.url.dirty || f.url.touched))">
+                            <div *ngIf="f.url.errors.required">
+                                Video url zorunlu
+                            </div>
+                            <div *ngIf="f.url.errors.pattern">
+                                Video Url geçersiz biçim kullanıldı.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row row">
+                <div class="col-md-12">
+                    <label>Küçük Resim Url<span class="error-red">*</span></label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="thumbnail">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row row img-preview" *ngIf="f.thumbnail.value && !isLoading">
+                <div class="col-md-12">
+
+                    <div class="form-group">
+                        <img src={{f.thumbnail.value}} width="400">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-button">
+                <button type="submit" class="btn btn-common  btn-success butn">Kayıt</button>
+                <button type="button" class="btn btn-common  btn-danger butn" (click)="goBack()">İptal</button>
+            </div>
+
+        </form>
+    </div>
+</div>

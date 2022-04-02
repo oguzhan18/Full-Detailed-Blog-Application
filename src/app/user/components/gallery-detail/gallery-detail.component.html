@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="title-section">
+        <h5>
+           Kullanım Dışı ----
+        </h5>
+
+        <button class="btn btn-add btn-primary" (click)="goBack()">Geri Çık</button>
+    </div>
+    <div class="add-form" *ngIf="galleryData">
+        <div class="detail-title">
+            <h4>{{galleryData?.eventDate.toDate() | date:'MMM d, y'}} - {{galleryData?.title}}</h4>
+            <p class="datetime">
+                <span>
+                    {{galleryData?.date.toDate() | date:'d MMM, y hh:mm a'}}
+                </span>
+                <span>
+                    <b>By</b> {{galleryData?.author}}
+                </span>
+            </p>
+            <div class="sharebuttons">
+                <a href='https://www.facebook.com/sharer/sharer.php?u={{url}}' target="_blank" class="fa fa-facebook"></a>
+                <a href="https://www.twitter.com/intent/tweet?url={{url}}" target="_blank" class="fa fa-twitter"></a>
+
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{url}}" target="_blank" class="fa fa-linkedin"></a>
+                <a href="https://wa.me/9974990993/?text={{url}}" target="_blank" class="fa fa-whatsapp"></a>
+
+                <a href="https://telegram.me/share/url?url={{url}}" target="_blank" class="fa fa-tumblr"></a>
+                <a href="javascript:void(0)" class="fa fa-share-alt" (click)="shareLink()"></a>
+            </div>
+        </div>
+
+
+
+        <div class="detail-body">
+            <div class="row  mx-0 justify-content-center">
+                <div class="col-lg-6 col-md-6 col-sm-12" *ngFor="let img of galleryData.imgUrl">
+                    <div class="article-column">
+                        <div class="card-body">
+                            <br>
+                            <div class="img-grid">
+                                <div class="bg-img img-responsive text-center">
+                                    <img src={{img}}>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-outline-secondary last-btn">
+                                
+                                <a href={{img}} download target="_blank" class="fa fa-eye">
+                                    <span class="text-sm">
+                                        Open Image
+                                    </span>
+                                    
+                                </a>
+                            </button>
+                            <button class="btn btn-outline-primary ml-2">
+                                <a href="javascript:void(0);" class="fa fa-download" (click)="downloadImage(img)">
+                                    <span class="text-sm">
+                                        Download
+                                    </span>
+                                 
+                                </a>
+
+                            </button>
+
+                            <button class="btn btn-outline-primary ml-2" (click)="downloadAllImages(galleryData.imgUrl)">
+                                <span class="">
+                                    Download All Image        
+                                </span>
+                            
+
+                            </button>
+
+
+                        </div>
+                    </div>
+                    <br>
+                </div>
+
+
+            </div>
+            <div [innerHtml]="galleryData?.body"></div>
+        </div>
+    </div>
+</div>

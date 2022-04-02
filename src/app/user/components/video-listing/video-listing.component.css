@@ -1,0 +1,13 @@
+iframe {
+    border: none;
+}
+
+.column-coloumn h5 {
+    margin-top: 00;
+}
+
+@media screen and (max-width:767px) {
+    iframe {
+        max-height: 225px;
+    }
+}

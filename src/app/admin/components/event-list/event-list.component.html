@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="card list-section">
+        <div class="title-section">
+            <h5>
+                Etkinlik Listesi
+            </h5>
+            <button class="btn btn-add btn-primary" (click)="addEvent()">Yeni Etkinlik Ekle</button>
+        </div>
+        <div class="table table-responsive">
+            <table class="table table-striped my-0 table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Başlık</th>
+                        <th scope="col">Zaman</th>
+                        <th scope="col">Başlangıç Saati</th>
+                        <th scope="col">Bitiş Saati</th>
+                        <th scope="col">Düzenleyici</th>
+                        <th scope="col">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let event of eventList; let i=index" class="table-light">
+                        <td> {{i+1}} </td>
+                        <td>{{event?.title}}</td>
+                        <td>{{formatDate(event?.date) | date:'MMM d, y'}}</td>
+                        <td>{{formatDate(event?.startTime)| date:'hh:mm a'}}</td>
+                        <td>{{formatDate(event?.endTime)| date:'hh:mm a'}}</td>
+                        <td>{{event?.organizer}}</td>
+
+                        <td>
+
+                            <a href="javascript:void(0)" (click)="editEvent(event)">
+                                Düzenle
+                            </a>
+                            <a href="javascript:void(0)" (click)="deleteEvent(event)" style="color: red;">
+                                Sil
+                            </a>
+                        </td>
+            </table>
+        </div>
+    </div>
+</div>

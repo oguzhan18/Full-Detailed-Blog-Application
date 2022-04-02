@@ -1,0 +1,102 @@
+<header class="main-header">
+
+    <div class="header-wrapper">
+        <h1 class="main-navigation__title"><a href="/">AIFA BLOG ADMIN</a></h1>'
+        <!-- <button class="donate-btn" (click)="gotoDonate()">
+            <i class='fas fa-donate'></i>
+            Donate Now</button> -->
+    </div>
+
+    <nav class="main-navigation__header-nav">
+        <ul class="nav-links">
+
+            <li *ngIf="isAuthenticated">
+                <!-- <a routerLinkActive="active" routerLink="/admin/gallery-list"> Gallery</a> -->
+            </li>
+
+            <li *ngIf="isAuthenticated">
+                <a routerLinkActive="active" routerLink="/admin/event-list"> Etkinlikler</a>
+            </li>
+
+            <li *ngIf="isAuthenticated">
+                <a routerLinkActive="active" routerLink="/admin/article-list"> Blog</a>
+            </li>
+
+            <li *ngIf="isAuthenticated">
+                <a routerLinkActive="active" routerLink="/admin/video-list"> Video</a>
+            </li>
+
+
+            <li *ngIf="isAuthenticated">
+                <a routerLinkActive="active" routerLink="/admin/book-list"> Ürün</a>
+            </li>
+
+            <li *ngIf="isAuthenticated && isAdmin">
+                <a routerLinkActive="active" routerLink="/admin/about"> Hakkımızda</a>
+            </li>
+
+
+
+
+
+            <li *ngIf="isAuthenticated && isAdmin">
+                <a routerLinkActive="active" routerLink="/admin/user-list" [routerLinkActiveOptions]="{exact: true}">
+                    ÜyeEkle</a>
+            </li>
+
+
+            <li><a *ngIf="!isAuthenticated" routerLinkActive="active" routerLink="/admin/auth">Giriş Yap</a></li>
+            <li><button *ngIf="isAuthenticated" (click)="onLogout()">Çıkış Yap </button></li>
+        </ul>
+    </nav>
+    <div class="mobile-only-icon">
+        <div class="icon" [ngClass]="isMenuOpen ? 'open' : 'closed'" (click)="openMenu()">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+    </div>
+
+</header>
+<div class="headerMenu" *ngIf="isMenuOpen" class="headerMenu" [ngClass]="isMenuOpen? 'open':'closed'">
+    <div class="Menu-heading"><span> AIFA BLOG </span>
+        <hr class="mb-0">
+    </div>
+    <div class="Menus">
+        <nav>{{isAuthenticated}}
+            <ul id="navigation" (click)="openMenu()">
+
+
+                <li *ngIf="isAuthenticated">
+                    <a routerLinkActive="active" routerLink="/admin/article-list"> Blog</a>
+                </li>
+
+                <li *ngIf="isAuthenticated && isAdmin">
+                    <a routerLinkActive="active" routerLink="/admin/about"> Hakkımızda</a>
+                </li>
+
+                <li *ngIf="isAuthenticated">
+                    <a routerLinkActive="active" routerLink="/admin/book-list"> Ürünler</a>
+                </li>
+
+
+                <li *ngIf="isAuthenticated">
+                    <a routerLinkActive="active" routerLink="/admin/event-list"> Etkinlikler</a>
+                </li>
+
+
+                <li *ngIf="isAuthenticated && isAdmin">
+                    <a routerLinkActive="active" routerLink="/admin/user-list" [routerLinkActiveOptions]="{exact: true}"> Üye</a>
+                </li>
+                <li *ngIf="isAuthenticated">
+                    <a routerLinkActive="active" routerLink="/admin/video-list"> Videolar</a>
+                </li>
+
+
+                <li *ngIf="!isAuthenticated"><a routerLinkActive="active" routerLink="/admin/auth">Giriş Yap / Kaydol</a>
+                </li>
+                <li *ngIf="isAuthenticated"><button (click)="onLogout()">Çıkış Yap </button></li>
+            </ul>
+        </nav>
+    </div>
+</div>

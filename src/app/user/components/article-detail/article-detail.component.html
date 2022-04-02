@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="title-section">
+        <h5>
+            AIFA BLOG
+        </h5>
+
+        <button class="btn btn-add btn-primary" (click)="goBack()">Geri</button>
+    </div>
+    <div class="add-form" *ngIf="articleData">
+        <div class="detail-title">
+            <h4>{{articleData?.title}}</h4>
+            <p class="datetime">
+                <span>
+                    {{articleData?.date.toDate() | date:'d MMM, y hh:mm a'}}
+                </span>
+                <span>
+                   <b> {{articleData?.author}}</b> 
+                </span>
+            </p>
+            <div class="sharebuttons">
+                <a href='https://www.facebook.com/sharer/sharer.php?u={{url}}' target="_blank" class="fa fa-facebook"></a>
+                <a href="https://www.twitter.com/intent/tweet?url={{url}}" target="_blank" class="fa fa-twitter"></a>
+
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{url}}" target="_blank" class="fa fa-linkedin"></a>
+                <a href="https://wa.me/9974990993/?text={{url}}" target="_blank" class="fa fa-whatsapp"></a>
+
+                <a href="https://telegram.me/share/url?url={{url}}" target="_blank" class="fa fa-tumblr"></a>
+                <!-- <a href="javascript:void(0)" class="fa fa-share-alt" (click)="shareLink()"></a> -->
+            </div>
+        </div>
+
+
+
+        <div class="detail-body">
+            <div [innerHtml]="articleData?.body"></div>
+        </div>
+    </div>
+</div>

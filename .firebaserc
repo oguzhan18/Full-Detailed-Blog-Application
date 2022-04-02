@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "matery-5d74a": {
+      "hosting": {
+        "aifablog": [
+          "matery-5d74a"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "matery-5d74a"
+  }
+}

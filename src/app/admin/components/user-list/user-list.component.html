@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="card list-section">
+        <div class="title-section">
+            <h5>
+                Yetkili Üye
+            </h5>
+
+            <button class="btn btn-add btn-primary" (click)="addUser()">Yeni Üye Ekle</button>
+        </div>
+        <div class="table table-responsive">
+            <table class="table table-striped my-0 table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">Zaman</th>
+                        <th scope="col">İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let article of UserList; let i=index" class="table-light">
+                        <td> {{i+1}} </td>
+                        <td>{{article?.email}}</td>
+                        <td>{{article?.password}}</td>
+                        <td>{{article?.date.toDate() | date:'MMM d, y hh:mm a'}}</td>
+                        <td>
+                            <a href="javascript:void(0)" (click)="editUser(article)">
+                                <i class="fas fa-pencil-alt ms-text-primary"></i> Düzenle
+                            </a>
+                            <a href="javascript:void(0)" (click)="deleteUser(article)" style="color: red;">
+                                <i class="far fa-trash-alt ms-text-danger"></i> Sil
+                            </a>
+                        </td>
+            </table>
+        </div>
+    </div>
+</div>

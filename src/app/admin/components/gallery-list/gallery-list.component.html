@@ -1,0 +1,100 @@
+Kullanıma Kapattım ---
+
+
+
+<!-- <div class="container">
+    <div class="card list-section">
+        <div class="title-section">
+            <h5>
+                Gallery 
+            </h5>
+
+            <button class="btn btn-add btn-primary" (click)="addGallery()">Add Gallery</button>
+        </div>
+        <div class="table table-responsive" *ngIf="isAdmin">
+            <table class="table table-striped my-0 table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Event Date</th>
+                        <th scope="col">Is Public</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let gallery of galleryList; let i=index" class="table-light">
+                        <td> {{i+1}} </td>
+                        <td>{{gallery?.title}}</td>
+                        <td>{{formatDate(gallery?.date) | date:'MMM d, y hh:mm a'}}</td>
+                        <td>{{gallery?.author}}</td>
+                        <td>{{formatDate(gallery?.eventDate) | date:'MMM d, y'}}</td>
+
+                        <td>
+                            <div *ngIf="gallery.isPublic ; else resetStatus">
+                                <label class="switch">
+                                        <input type="checkbox" checked (change)="onCheckBoxChange($event, gallery)">
+                                        <span class="slider round"></span>
+                                    </label>
+                            </div>
+                            <ng-template #resetStatus>
+                                <label class="switch">
+                                        <input type="checkbox" (change)="onCheckBoxChange($event, gallery)">
+                                        <span class="slider round"></span>
+                                    </label>
+                            </ng-template>
+                        </td>
+                        <td>
+                            <a href="javascript:void(0)" class="primary" (click)="viewgallery(gallery)">
+                                view
+                            </a>
+                            <a href="javascript:void(0)" (click)="editGallery(gallery)">
+                                Edit
+                            </a>
+                            <a href="javascript:void(0)" (click)="deleteGallery(gallery)" style="color: red;">
+                                Delete
+                            </a>
+                        </td>
+            </table>
+        </div>
+
+        <div class="table table-responsive" *ngIf="isUser">
+            <table class="table table-striped my-0 table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Created Date</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Event Date</th>
+
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let gallery of galleryList; let i=index" class="table-light">
+                        <td> {{i+1}} </td>
+                        <td>{{gallery?.title}}</td>
+                        <td>{{formatDate(gallery?.date) | date:'MMM d, y hh:mm a'}}</td>
+                        <td>{{gallery?.author}}</td>
+                        <td>{{formatDate(gallery?.eventDate) | date:'MMM d, y'}}</td>
+
+                        <td>
+                            <a href="javascript:void(0)" class="primary" (click)="Viewgallery(gallery)">
+                                View
+                            </a>
+                            <a href="javascript:void(0)" (click)="editgallery(gallery)">
+                                Edit
+                            </a>
+                            <a href="javascript:void(0)" (click)="deletegallery(gallery)" style="color: red;">
+                                Delete
+                            </a>
+                        </td>
+            </table>
+        </div>
+    </div>
+</div> -->

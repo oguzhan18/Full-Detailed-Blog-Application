@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="card list-section">
+        <div class="title-section">
+            <h5>
+                Book List
+            </h5>
+            <button class="btn btn-add btn-primary" (click)="addBook()">Ürün Ekle</button>
+        </div>
+        <div class="table table-responsive">
+            <table class="table table-striped my-0 table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Başlık</th>
+                        <th scope="col">Zaman</th>
+                        <th scope="col">Yazar</th>
+                        <th scope="col">İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let book of bookList; let i=index" class="table-light">
+                        <td> {{i+1}} </td>
+                        <td>{{book?.title}}</td>
+                        <td>{{formatDate(book?.date) | date:'MMM d, y hh:mm a'}}</td>
+                        <td>{{book?.author}}</td>
+
+                        <td>
+                            <a href="javascript:void(0)" class="primary" (click)="viewBook(book)">
+                                Önizle
+                            </a>
+                            <a href="javascript:void(0)" (click)="editBook(book)">
+                                Düzenle
+                            </a>
+                            <a href="javascript:void(0)" (click)="deleteBook(book)" style="color: red;">
+                                Sil
+                            </a>
+                        </td>
+            </table>
+        </div>
+    </div>
+</div>

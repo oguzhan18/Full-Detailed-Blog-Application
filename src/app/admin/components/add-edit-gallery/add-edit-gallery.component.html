@@ -1,0 +1,174 @@
+<div class="container">
+    <div class="title-section">
+        <h5>
+            Add Gallery
+        </h5>
+
+        <button class="btn btn-add btn-primary" (click)="goBack()">Go Back</button>
+    </div>
+    <div class="add-form">
+        <form class="login-box" [formGroup]="galleryForm" (ngSubmit)="submitForm()">
+            <div class="form-row row">
+                <div class="col-md-12">
+                    <label>Name<span class="error-red">*</span></label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="title">
+                        <div class="error" *ngIf="f.title.invalid && ( (f.title.dirty || f.title.touched))">
+                            <div *ngIf="f.title.errors.required">
+                                Title is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row">
+
+
+                <div class="col-md-6">
+                    <label>Author<span class="error-red">*</span></label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="author">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="wrapper1">
+                        <label>Select the Event Date <span class="error-red">*</span></label>
+                        <div class="form-group">
+                            <!-- <input type="date" class="form-control" formControlName="date"> -->
+                            <!-- <input type="date" placeholder="eventDate" class="form-control" formControlName="eventDate"> -->
+                            <input type="text" placeholder="Select Event Date" class="form-control" [bsConfig]="config" bsDatepicker formControlName="eventDate">
+
+                            <div class="error" *ngIf="f.date.invalid && ( (f.date.dirty || f.date.touched))">
+                                <div *ngIf="f.date.errors.required">
+                                    Date is required.
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row row pt-4 gallery-grid">
+
+
+                <div class="col-md-12">
+
+                    <div class="gridview">
+
+                        <div class="form-group grid-child">
+                            <p>Select Files to Upload</p>
+                            <label>
+                                <input
+                                  type="file" multiple
+                                  class="text-nowrap text-truncate"
+                                  (change)="selectFiles($event)"
+                                />
+                              </label>
+
+                            <button type="button" class="btn btn-success btn-sm" [disabled]="!selectedFilesGallery" (click)="uploadMutlipleFiles()">
+                                Upload
+                            </button>
+
+                        </div>
+
+                        <div class="form-group grid-child">
+                            <p>Add url to upload</p>
+                            <div class="add-url-block">
+                                <input type="text" formControlName="addUrl" class="form-control">
+                                <button type="button" class="btn btn-success btn-sm" (click)="addUrl()" [disabled]="f.addUrl.invalid || f.addUrl.pristine">+ Add</button>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <div *ngIf=" gallerycurrentFileUpload " class="progress mt-2 ">
+                        <div class="progress-bar progress-bar-info " role="progressbar " attr.aria-valuenow="{{ percentage }} " aria-valuemin="0 " aria-valuemax="100 " [ngStyle]="{ width: percentage + '%' } ">
+                            {{ percentage }}%
+                        </div>
+                    </div>
+
+                    <div class="preview-imgs">
+                        <div class="action-buttons">
+                            <button (click)="deleteAllImg()" class="btn btn-danger mr-2" *ngIf="galleryimagePaths.length>0">Delete All</button>
+                            <button class="btn btn-warning" (click)="restoreImages()" *ngIf=" shouldUndoAction">Undo Last Action</button>
+                        </div>
+
+                        <div class="row mx-0" *ngIf="galleryimagePaths.length>0">
+                            <div class="col-lg-3 col-sm-6" *ngFor="let img of galleryimagePaths">
+                                <div class="gallery-img">
+                                    <button class="btn" (click)="deleteImage(img)"><i class="fa fa-trash-o"></i></button>
+                                    <img src={{img}}>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="fileupload">
+
+                <div *ngIf="currentFileUpload" class="progress mt-2">
+                    <div class="progress-bar progress-bar-info" role="progressbar" attr.aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: percentage + '%' }">
+                        {{ percentage }}%
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row mt-3">
+                <div class="image-upload">
+                    <label for="file-input">
+                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa0qEV_mEF19gs68CDaSmZ4e0kssbxyOAMbw&usqp=CAU"/>
+                    </label>
+
+                    <input id="file-input" type="file" (change)="selectFile($event)" />
+                </div>
+                <div class="col-md-12">
+                    <label>Body<span class="error-red">*</span></label>
+                    <div class="form-group">
+                        <ckeditor #myckeditor [config]="config" data="<p>Some initial data</p>" type="classic" formControlName="body"></ckeditor>
+                        <div class="error" *ngIf="f.body.invalid && ( (f.body.dirty || f.body.touched))">
+                            <div *ngIf="f.body.errors.required">
+                                Body is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-button">
+                <button type="submit" class="btn btn-common  btn-success butn" [disabled]="!galleryForm.valid">Save</button>
+                <button type="button" class="btn btn-common  btn-danger butn" (click)="goBack()">Cancel</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+<div class="modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Warning</h4>
+                <button type="button" class="close" data-dismiss="modal" (click)="hideModal()">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                Your article Image is not uploaded completely. If you go back you changes will not be saved. Please wait for a while image upload is in progress
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="hideModal()">Cancel</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="goBackTogallery()">Go Back</button>
+            </div>
+
+        </div>
+    </div>

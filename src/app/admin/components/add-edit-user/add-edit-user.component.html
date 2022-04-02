@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="title-section">
+        <h5>
+            Üye Ekle
+        </h5>
+
+        <button class="btn btn-add btn-primary" (click)="goBack()">Geri Çık</button>
+    </div>
+    <div class="add-form">
+        <form class="login-box" [formGroup]="userForm" (ngSubmit)="submitForm()">
+            <div class="form-row row">
+                <div class="col-md-12">
+                    <label>Email<span class="error-red">*</span></label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="email">
+                        <div class="error" *ngIf="f.email.invalid && ( (f.email.dirty || f.email.touched))">
+                            <div *ngIf="f.email.errors.required">
+                                Email alanı doldurmak zorunlu!!!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row row">
+                <div class="col-md-12">
+                    <label>Şifre<span class="error-red">*</span></label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="password">
+                        <div class="error" *ngIf="f.password.invalid && ( (f.password.dirty || f.password.touched))">
+                            <div *ngIf="f.password.errors.required">
+                                Email alanı doldurmak zorunlu!!!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-button">
+                <button type="submit" class="btn btn-common  btn-success butn">Kayıt Et</button>
+                <button type="button" class="btn btn-common  btn-danger butn" (click)="goBack()">İptal</button>
+            </div>
+
+        </form>
+    </div>
+</div>

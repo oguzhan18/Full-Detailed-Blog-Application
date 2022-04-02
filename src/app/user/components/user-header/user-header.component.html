@@ -1,0 +1,77 @@
+<header class="main-header">
+
+    <div class="header-wrapper">
+        <h1 class="main-navigation__title"><a href="/">AIFA BLOG</a></h1>'
+        <!-- <button class="donate-btn" (click)="gotoDonate()">
+            <i class='fas fa-donate'></i>
+            Donate Now</button> -->
+    </div>
+    <nav class="main-navigation__header-nav">
+        <ul class="nav-links">
+
+            <li>
+                <a routerLinkActive="active" routerLink="/user/live-shows" [routerLinkActiveOptions]="{exact: true}">Etkinlikler</a>
+            </li>
+            <li>
+                <!-- <a routerLinkActive="active" routerLink="/user/gallery-list"> Gallery</a> -->
+            </li>
+            <li>
+                <a routerLinkActive="active" routerLink="/user/article-list"> Blog</a>
+            </li>
+            <li>
+                <a routerLinkActive="active" routerLink="/user/video-list" [routerLinkActiveOptions]="{exact: true}"> Video</a>
+            </li>
+            <li>
+                <a routerLinkActive="active" routerLink="/user/book-list" [routerLinkActiveOptions]="{exact: true}"> Ürün</a>
+            </li>
+            <li>
+                <a routerLinkActive="active" routerLink="/user/about"> Hakkımızda</a>
+                <a routerLinkActive="active" routerLink="/admin">Login </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="mobile-only-icon">
+        <div class="icon" [ngClass]="isMenuOpen ? 'open' : 'closed'" (click)="openMenu()">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+    </div>
+
+</header>
+<div class="headerMenu" *ngIf="isMenuOpen" class="headerMenu" [ngClass]="isMenuOpen? 'open':'closed'">
+    <div class="Menu-heading"><span> Menu </span>
+        <hr class="mb-0">
+    </div>
+    <div class="Menus">
+        <nav>
+            <ul id="navigation" (click)="openMenu()">
+                <li>
+                    <a routerLinkActive="active" routerLink="/user/live-shows" [routerLinkActiveOptions]="{exact: true}"> Etkinlik</a>
+                </li>
+                <li>
+                    <a routerLinkActive="active" routerLink="/user/article-list"> Blog</a>
+                </li>
+
+                <!-- <li>
+                    <a routerLinkActive="active" routerLink="/user/gallery-list"> Gallery</a>
+                </li> -->
+
+
+                <li>
+                    <a routerLinkActive="active" routerLink="/user/video-list" [routerLinkActiveOptions]="{exact: true}"> Video</a>
+                </li>
+
+                <li>
+                    <a routerLinkActive="active" routerLink="/user/book-list" [routerLinkActiveOptions]="{exact: true}"> Ürün</a>
+                </li>
+
+                <li>
+                    <a routerLinkActive="active" routerLink="/user/about"> Hakkımızda</a>
+                     <a routerLinkActive="active" routerLink="/admin">Login </a>
+
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

@@ -1,0 +1,127 @@
+<div class="container">
+    <div class="title-section">
+        <h5>
+            Blog Düzenle
+        </h5>
+
+        <button class="btn btn-add btn-primary" (click)="goBack()">Geri</button>
+    </div>
+    <div class="add-form">
+        <form class="login-box" [formGroup]="articleForm" (ngSubmit)="submitForm()">
+            <div class="form-row row">
+                <div class="col-md-12">
+                    <label>Başlık<span class="error-red">*</span></label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="title">
+                        <div class="error" *ngIf="f.title.invalid && ( (f.title.dirty || f.title.touched))">
+                            <div *ngIf="f.title.errors.required">
+                                Başlık alanı zorunlu!!!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row">
+                <!-- <div class="col-md-6">
+                    <label>Category<span class="error-red">*</span></label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="category">
+                    </div>
+                </div> -->
+
+                <div class="col-md-6">
+                    <label>Kategori<span class="error-red">*</span></label>
+                    <div class="form-group">
+                        <select class="form-control" (change)="changeCategory($event)" formControlName="category">
+                       
+                            <option value="" disabled>Kategorinizi seçin</option>
+                            <option *ngFor="let catrgory of availableCategory" [value]="catrgory">{{catrgory}}</option>
+                    </select>
+                        <div class="error" *ngIf="f.category.invalid && ( (f.category.dirty || f.category.touched))">
+                            <div *ngIf="f.category.errors.required">
+                                Kategori alanı zorunlu!!!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label>Yazar<span class="error-red">*</span></label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="author">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row row">
+                <div class="col-md-12">
+                    <label>Resim url<span class="error-red">*</span></label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="thumbnail">
+                    </div>
+                </div>
+                <div class="preview-img">
+                    <img src={{f.thumbnail.value}} width="400">
+                </div>
+            </div>
+
+            <div class="fileupload">
+                <div *ngIf="currentFileUpload" class="progress mt-2">
+                    <div class="progress-bar progress-bar-info" role="progressbar" attr.aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: percentage + '%' }">
+                        {{ percentage }}%
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row">
+                <div class="image-upload">
+                    <label for="file-input">
+                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa0qEV_mEF19gs68CDaSmZ4e0kssbxyOAMbw&usqp=CAU"/>
+                    </label>
+
+                    <input id="file-input" type="file" (change)="selectFile($event)" />
+                </div>
+                <div class="col-md-12">
+                    <label>Sayfa<span class="error-red">*</span></label>
+                    <div class="form-group">
+                        <!-- <ckeditor #myckeditor [config]="config" data="<p>Some initial data</p>" type="classic" formControlName="body"></ckeditor> -->
+                        <quill-editor class="content-editor" [placeholder]="''" formControlName="body"> </quill-editor>
+                        <div class="error" *ngIf="f.body.invalid && ( (f.body.dirty || f.body.touched))">
+                            <div *ngIf="f.body.errors.required">
+                                Sayfa alanı zorunlu!!!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-button">
+                <button type="submit" class="btn btn-common  btn-success butn" [disabled]="!articleForm.valid">Kayıt</button>
+                <button type="button" class="btn btn-common  btn-danger butn" (click)="goBack()">İptal</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+<div class="modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Uyarı!!!</h4>
+                <button type="button" class="close" data-dismiss="modal" (click)="hideModal()">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                Blog Resmi tamamen yüklenmedi. Geri dönerseniz yaptığınız değişiklikler kaydedilmez. Lütfen bir süre bekleyin resim yükleme devam ediyor            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="hideModal()">İptal</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="goBackToArticle()">Geri</button>
+            </div>
+
+        </div>
+    </div>
