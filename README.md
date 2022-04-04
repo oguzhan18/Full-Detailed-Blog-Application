@@ -1,8 +1,16 @@
 # Full Detailed Blog Application
-A simple management portal that provides price tracking, technical analysis, customer management and stock tracking suitable for your industry.
-#
-You can follow and follow foreign currency, mining, sarrafiye (Gold-Jewelry), Bitcoin, Stock Exchange, Commodity, Technical Analysis, World Currencies and all prices.
+Literally A Blog Application With Admin Login.
 
+- Activity
+- Product
+- Article
+- About
+- Social media
+- Video
+
+# 
+Changeable theme feature and firebase database are easy and useful.
+#
 
 ## Badges
 
@@ -18,12 +26,8 @@ Use it as you want
 ## Making
 - Ease of Use.
 - Angular
-- WebSokcet,
-- API,
-- Role Based Authorization,
-- BootStrap,
-- Material
-- SaaS
+- Firebase
+- Youtube Api
 
 ## Screenshots
 <img src="ss/1.png">
